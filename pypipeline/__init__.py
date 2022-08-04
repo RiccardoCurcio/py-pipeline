@@ -17,3 +17,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from pypipeline.src import pipeline
+from pypipeline.src import asyncpipeline
+from pypipeline.src import eventlooppipeline
+from pypipeline.src import asynceventlooppipeline
