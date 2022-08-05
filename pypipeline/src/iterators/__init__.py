@@ -19,7 +19,7 @@
 from typing import Callable, Iterator, Any
 from pypipeline.src.exceptions import PipeLineException
 
-def iterate(listOfCallable: Iterator, input: Any):
+def iterate(listOfCallable: Iterator, input: Any) -> Any:
     """_summary_
 
     Args:
@@ -30,7 +30,7 @@ def iterate(listOfCallable: Iterator, input: Any):
         PipeLineException: _description_
 
     Returns:
-        _type_: _description_
+        Any: _description_
     """
     call = next(listOfCallable, None)
     if isinstance(call, Callable):
@@ -42,7 +42,7 @@ def iterate(listOfCallable: Iterator, input: Any):
     else:
         raise PipeLineException("Not valid pipeline")
 
-async def asynciterate(listOfCallable: Iterator, input: Any):
+async def asynciterate(listOfCallable: Iterator, input: Any) -> Any:
     """_summary_
 
     Args:
@@ -53,7 +53,7 @@ async def asynciterate(listOfCallable: Iterator, input: Any):
         PipeLineException: _description_
 
     Returns:
-        _type_: _description_
+        Any: _description_
     """
     call = next(listOfCallable, None)
     if isinstance(call, Callable):
