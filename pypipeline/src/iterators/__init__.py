@@ -33,14 +33,16 @@ def iterate(listOfCallable: Iterator, input: Any) -> Any:
         Any: _description_
     """
     call = next(listOfCallable, None)
-    if isinstance(call, Callable):
-        return iterate(listOfCallable, call(input))
-    elif isinstance(call, list) and isinstance(call[0], Callable):
-        return iterate(listOfCallable, call[0](input, *call[1:]))
-    elif call is None:
-        return input
-    else:
-        raise PipeLineException("Not valid pipeline")
+
+    match [isinstance(call, Callable), isinstance(call, list) and isinstance(call[0], Callable), call is None]:
+        case [True, False, False]:
+            return iterate(listOfCallable, call(input))
+        case [False, True, False]:
+            return iterate(listOfCallable, call[0](input, *call[1:]))
+        case [False, False, True]:
+            return input
+        case _:
+            raise PipeLineException("Not valid pipeline")
 
 async def asynciterate(listOfCallable: Iterator, input: Any) -> Any:
     """_summary_
@@ -56,11 +58,13 @@ async def asynciterate(listOfCallable: Iterator, input: Any) -> Any:
         Any: _description_
     """
     call = next(listOfCallable, None)
-    if isinstance(call, Callable):
-        return await asynciterate(listOfCallable, await call(input))
-    elif isinstance(call, list) and isinstance(call[0], Callable):
-        return await asynciterate(listOfCallable, await call[0](input, *call[1:]))
-    elif call is None:
-        return input
-    else:
-        raise PipeLineException("Not valid pipeline")
+
+    match [isinstance(call, Callable), isinstance(call, list) and isinstance(call[0], Callable), call is None]:
+        case [True, False, False]:
+            return await asynciterate(listOfCallable, await call(input))
+        case [False, True, False]:
+            return await asynciterate(listOfCallable, await call[0](input, *call[1:]))
+        case [False, False, True]:
+            return input
+        case _:
+            raise PipeLineException("Not valid pipeline")
