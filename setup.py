@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="py-pipeline",
-    version="develop",
+    version="v1.0.0",
     license='GPL v3',
     author="Riccardo Curcio",
     author_email="curcioriccardo@gmail.com",
@@ -17,7 +17,8 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     keywords = [
         'functional',
-        'pipeline'
+        'pipeline',
+        'async pipeline'
     ],
     install_requires=['typing'],
     classifiers=[
