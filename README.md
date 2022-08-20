@@ -2,16 +2,16 @@
 pipeline in python3
 
 ## Install
-```sh
+```shell
 $ pip3 install py-pipeline
 ```
 
 ## Clone rthi repository and local install
-```sh
+```shell
 $ pip3 install --upgrade .
 ```
 ## Run test
-```sh
+```shell
 $ python3 -m unittest -v tests/main.py 
 ```
 
@@ -60,6 +60,7 @@ TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ
 
 ```py
 from pypipeline import asyncpipeline
+import asyncio
 
 
 async def asyncone(input):
@@ -79,15 +80,15 @@ async def asyncfour(input, a, b, c):
 
 
 if __name__ == "__main__":
-    result = asyncpipeline(
-        input="TEST ",
-        pipe=[
-            asyncone,
-            asynctwo,
-            [asyncthree, " DD ", " EE ", " FF "],
-            [asyncfour, " XX ", " YY ", " ZZ "]
-        ]
-    )
+    result = asyncio.run(asyncpipeline(
+            input="TEST ",
+            pipe=[
+                asyncone,
+                asynctwo,
+                [asyncthree, " DD ", " EE ", " FF "],
+                [asyncfour, " XX ", " YY ", " ZZ "]
+            ]
+        ))
     print(result)
 ```
 

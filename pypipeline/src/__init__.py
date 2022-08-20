@@ -35,7 +35,7 @@ def pipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callabl
     """
     return iterate(listOfCallable=iter(pipe), input=input)
 
-def asyncpipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]):
+async def asyncpipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]):
     """_summary_
 
     Args:
@@ -45,7 +45,7 @@ def asyncpipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Ca
     Returns:
         _type_: _description_
     """
-    return asyncio.run(asynciterate(listOfCallable=iter(pipe), input=input))
+    return await asynciterate(listOfCallable=iter(pipe), input=input)
 
 def eventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[], callback:Union[Callable, None] = None):
     """_summary_
