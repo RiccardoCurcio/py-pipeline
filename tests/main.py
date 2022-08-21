@@ -1,5 +1,7 @@
 import unittest
+import asyncio
 from pypipeline import pipeline, asyncpipeline, eventlooppipeline, asynceventlooppipeline
+
 
 def one(input):
     return input + " ONE "
@@ -32,6 +34,7 @@ async def asyncthree(input, *args):
 async def asyncfour(input, a, b, c):
     return input + " FOUR " + f"{a}" + f"{b}" + f"{c}"
 
+
 class TestPipeline(unittest.TestCase):
 
     def test_pipeline(self):
@@ -54,29 +57,36 @@ class TestPipeline(unittest.TestCase):
                 [four, " XX ", " YY ", " ZZ "]
             ]
         )
-        self.assertEqual(result, "TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ ")
+        self.assertEqual(
+            result, "TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ ")
 
     def test_asyncpipeline(self):
-        result = asyncpipeline(
-            input="TEST ",
-            pipe=[
-                asyncone,
-                asynctwo
-            ]
+        result = asyncio.run(
+            asyncpipeline(
+                input="TEST ",
+                pipe=[
+                    asyncone,
+                    asynctwo
+                ]
+            )
         )
         self.assertEqual(result, "TEST  ONE  TWO ")
 
     def test_asyncpipeline_with_args(self):
-        result = asyncpipeline(
-            input="TEST ",
-            pipe=[
-                asyncone,
-                asynctwo,
-                [asyncthree, " DD ", " EE ", " FF "],
-                [asyncfour, " XX ", " YY ", " ZZ "]
-            ]
+        result = asyncio.run(
+            asyncpipeline(
+                input="TEST ",
+                pipe=[
+                    asyncone,
+                    asynctwo,
+                    [asyncthree, " DD ", " EE ", " FF "],
+                    [asyncfour, " XX ", " YY ", " ZZ "]
+                ]
+            )
         )
-        self.assertEqual(result, "TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ ")
+        self.assertEqual(
+            result, "TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ ")
+
 
 if __name__ == '__main__':
     unittest.main()
