@@ -1,6 +1,6 @@
 import unittest
 import asyncio
-from pypipeline import pipeline, asyncpipeline, eventlooppipeline, asynceventlooppipeline
+from pypipelines import pipeline, asyncpipeline, eventlooppipeline, asynceventlooppipeline
 
 
 def one(input):

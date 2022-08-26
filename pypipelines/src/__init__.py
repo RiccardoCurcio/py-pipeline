@@ -20,7 +20,7 @@ import asyncio
 from asyncio import AbstractEventLoop
 from threading import Thread
 from typing import Any, Union, List, Callable, Iterator
-from pypipeline.src.iterators import iterate, asynciterate
+from pypipelines.src.iterators import iterate, asynciterate
 
 
 def pipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]) -> Any:
