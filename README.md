@@ -18,7 +18,13 @@ $ python3 -m unittest -v tests/main.py
 ## Examples
 
 ### Simple pipeline
+create a pipeline with functions
 
+```py
+def pipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]) -> Any:
+```
+
+Example
 ```py
 from pypipeline import pipeline
 
@@ -57,6 +63,12 @@ TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ
 ```
 
 ### Simple async pipeline
+
+```py
+async def asyncpipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]) -> Any:
+```
+
+Example
 
 ```py
 from pypipeline import asyncpipeline
@@ -99,6 +111,12 @@ TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ
 
 
 ### Simple event loop pipeline
+
+```py
+def eventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[], callback:Union[Callable, None] = None) -> None:
+```
+
+Example
 
 ```py
 from pypipeline import eventlooppipeline
@@ -152,6 +170,13 @@ CALLBACK ciao ONE  TWO  BB (sleep 2)  THREE  DD  EE  FF  FOUR  XX  YY  ZZ
 
 ### Simple event loop async pipeline
 
+
+```py
+def asynceventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[], callback:Union[Callable, None] = None) -> None:
+```
+
+Example
+
 ```py
 from pypipeline import asynceventlooppipeline
 from time import sleep
@@ -179,7 +204,7 @@ def callback(input):
     print("CALLBACK", input)
 
 if __name__ == "__main__":
-    result = asynceventlooppipeline(
+    asynceventlooppipeline(
             input="TEST ",
             pipe=[
                 asyncone,

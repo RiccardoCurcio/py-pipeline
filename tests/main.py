@@ -87,6 +87,65 @@ class TestPipeline(unittest.TestCase):
         self.assertEqual(
             result, "TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ ")
 
+    def test_eventlooppipeline(self):
+        def callback(input):
+            self.assertEqual(input, "TEST  ONE  TWO ")
+
+        eventlooppipeline(
+            input="TEST ",
+            pipe=[
+                one,
+                two
+            ],
+            callback=callback
+        )
+
+    def test_eventlooppipeline_with_args(self):
+        def callback(input):
+            self.assertEqual(input, "TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ ")
+
+        eventlooppipeline(
+            input="TEST ",
+            pipe=[
+                one,
+                two,
+                [three, " DD ", " EE ", " FF "],
+                [four, " XX ", " YY ", " ZZ "]
+            ],
+            callback=callback
+        )
+
+    def test_asynceventlooppipeline(self):
+        def callback(input):
+            self.assertEqual(
+                input, "TEST  ONE  TWO ")
+
+        asynceventlooppipeline(
+            input="TEST ",
+            pipe=[
+                asyncone,
+                asynctwo
+            ],
+            callback=callback
+        )
+
+    def test_asynceventlooppipeline_with_args(self):
+        def callback(input):
+            self.assertEqual(
+                input, "TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ ")
+
+        asynceventlooppipeline(
+            input="TEST ",
+            pipe=[
+                asyncone,
+                asynctwo,
+                [asyncthree, " DD ", " EE ", " FF "],
+                [asyncfour, " XX ", " YY ", " ZZ "]
+            ],
+            callback=callback
+        )
+        
+
 
 if __name__ == '__main__':
     unittest.main()

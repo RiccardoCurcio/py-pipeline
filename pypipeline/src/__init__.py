@@ -23,7 +23,7 @@ from typing import Any, Union, List, Callable, Iterator
 from pypipeline.src.iterators import iterate, asynciterate
 
 
-def pipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]):
+def pipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]) -> Any:
     """_summary_
 
     Args:
@@ -31,11 +31,11 @@ def pipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callabl
         pipe (Union[List[Callable], List[Union[List, Callable]]], optional): _description_. Defaults to [].
 
     Returns:
-        _type_: _description_
+        Any: _description_
     """
     return iterate(listOfCallable=iter(pipe), input=input)
 
-async def asyncpipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]):
+async def asyncpipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]) -> Any:
     """_summary_
 
     Args:
@@ -43,11 +43,11 @@ async def asyncpipeline(input:Any=None, pipe:Union[List[Callable], List[Union[Li
         pipe (Union[List[Callable], List[Union[List, Callable]]], optional): _description_. Defaults to [].
 
     Returns:
-        _type_: _description_
+        Any: _description_
     """
     return await asynciterate(listOfCallable=iter(pipe), input=input)
 
-def eventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[], callback:Union[Callable, None] = None):
+def eventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[], callback:Union[Callable, None] = None) -> None:
     """_summary_
 
     Args:
@@ -73,7 +73,7 @@ def eventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List
     thread.start()
 
 
-def asynceventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[], callback:Union[Callable, None] = None):
+def asynceventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[], callback:Union[Callable, None] = None) -> None:
     """_summary_
 
     Args:
