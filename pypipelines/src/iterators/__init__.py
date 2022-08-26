@@ -17,7 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 from typing import Callable, Iterator, Any
-from pypipeline.src.exceptions import PipeLineException
+from pypipelines.src.exceptions import PipeLineException
 
 def iterate(listOfCallable: Iterator, input: Any) -> Any:
     """_summary_

@@ -16,7 +16,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from pypipeline.src import pipeline
-from pypipeline.src import asyncpipeline
-from pypipeline.src import eventlooppipeline
-from pypipeline.src import asynceventlooppipeline
+from pypipelines.src import pipeline
+from pypipelines.src import asyncpipeline
+from pypipelines.src import eventlooppipeline
+from pypipelines.src import asynceventlooppipeline

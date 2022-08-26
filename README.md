@@ -3,7 +3,7 @@ pipeline in python3
 
 ## Install
 ```shell
-$ pip3 install py-pipeline
+$ pip3 install py-pipelines
 ```
 
 ## Clone rthi repository and local install
@@ -26,7 +26,7 @@ def pipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callabl
 
 Example
 ```py
-from pypipeline import pipeline
+from pypipelines import pipeline
 
 def one(input):
     return input + " ONE "
@@ -71,7 +71,7 @@ async def asyncpipeline(input:Any=None, pipe:Union[List[Callable], List[Union[Li
 Example
 
 ```py
-from pypipeline import asyncpipeline
+from pypipelines import asyncpipeline
 import asyncio
 
 
@@ -119,7 +119,7 @@ def eventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List
 Example
 
 ```py
-from pypipeline import eventlooppipeline
+from pypipelines import eventlooppipeline
 from time import sleep
 
 
@@ -178,7 +178,7 @@ def asynceventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union
 Example
 
 ```py
-from pypipeline import asynceventlooppipeline
+from pypipelines import asynceventlooppipeline
 from time import sleep
 
 async def asyncone(input):

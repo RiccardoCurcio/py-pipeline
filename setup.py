@@ -4,12 +4,12 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="py-pipeline",
+    name="py-pipelines",
     version="1.0.1",
     license='GPL v3',
     author="Riccardo Curcio",
     author_email="curcioriccardo@gmail.com",
-    description="Function pipeline",
+    description="Function pipelines",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/RiccardoCurcio/py-pipeline.git",
