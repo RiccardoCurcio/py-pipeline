@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="py-pipeline",
-    version="1.0.0",
+    version="1.0.1",
     license='GPL v3',
     author="Riccardo Curcio",
     author_email="curcioriccardo@gmail.com",
@@ -13,7 +13,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/RiccardoCurcio/py-pipeline.git",
-    download_url = 'https://github.com/RiccardoCurcio/py-pipeline.git/archive/develop.tar.gz',
+    download_url = 'https://github.com/RiccardoCurcio/py-pipeline/archive/refs/heads/master.zip',
     packages=setuptools.find_packages(),
     keywords = [
         'functional',
