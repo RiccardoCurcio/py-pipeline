@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="py-pipelines",
-    version="1.0.1",
+    version="1.0.3",
     license='GPL v3',
     author="Riccardo Curcio",
     author_email="curcioriccardo@gmail.com",
