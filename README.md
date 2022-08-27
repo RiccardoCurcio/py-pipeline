@@ -1,12 +1,12 @@
-# py-pipeline
+# py-pipelines
 pipeline in python3
 
-## Install
+## Install via pip
 ```shell
 $ pip3 install py-pipelines
 ```
 
-## Clone rthi repository and local install
+## Clone this repository and local install
 ```shell
 $ pip3 install --upgrade .
 ```
@@ -14,6 +14,9 @@ $ pip3 install --upgrade .
 ```shell
 $ python3 -m unittest -v tests/main.py 
 ```
+## pipelines
+
+All functions accept the return of the previous one as their first parameter.
 
 ## Examples
 
@@ -50,8 +53,8 @@ if __name__ == "__main__":
         pipe=[
             one,
             two,
-            [three, " DD ", " EE ", " FF "],
-            [four, " XX ", " YY ", " ZZ "]
+            [three, " DD ", " EE ", " FF "], # function with paramiters
+            [four, " XX ", " YY ", " ZZ "] # function with paramiters
         ]
     )
     print(result)
@@ -63,6 +66,7 @@ TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ
 ```
 
 ### Simple async pipeline
+Create a pipeline with async functions
 
 ```py
 async def asyncpipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[]) -> Any:
@@ -111,6 +115,8 @@ TEST  ONE  TWO  THREE  DD  EE  FF  FOUR  XX  YY  ZZ
 
 
 ### Simple event loop pipeline
+
+Create a event loop pipeline with functions and run a callback when pipeline finish
 
 ```py
 def eventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[], callback:Union[Callable, None] = None) -> None:
@@ -169,7 +175,7 @@ CALLBACK ciao ONE  TWO  BB (sleep 2)  THREE  DD  EE  FF  FOUR  XX  YY  ZZ
 ```
 
 ### Simple event loop async pipeline
-
+Create a event loop pipeline with async functions and run a callback when pipeline finish
 
 ```py
 def asynceventlooppipeline(input:Any=None, pipe:Union[List[Callable], List[Union[List, Callable]]]=[], callback:Union[Callable, None] = None) -> None:
